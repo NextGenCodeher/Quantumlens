@@ -1,0 +1,10 @@
+# Quantum Lens optional backend — install what you need; missing frameworks are simply reported as unavailable.
+fastapi>=0.110
+uvicorn>=0.29
+numpy>=1.24
+qiskit>=1.0
+qiskit-aer>=0.14
+cirq-core>=1.3
+pennylane>=0.38
+qbraid>=0.8
+ply>=3.11  # needed by qBraid's QASM -> Cirq conversion path
