@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Lens</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="#" class="logo">
+	    <img src="logo.png" alt="Quantum Lens Logo" class="nav-logo">Quantum Lens
+	    </a>
+        </div>
+        <nav>
+            <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#toolkit">Simulator</a></li>
+        <li><a href="tutorial.html">Tutorials</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="lab.html">Lab</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="docs.html">Docs</a></li>
+    </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>QUANTUM LENS <br>
+                <span id="typing-text" class="typing-highlight"></span><span class="typing-cursor"></span>
+            </h1>
+            <p>An interactive toolkit for building, visualizing, and analyzing quantum circuits. See the unseen and simulate the sublime directly in your browser.</p>
+            
+            <div class="btn-container">
+                <a href="#toolkit" class="btn btn-primary">Launch Simulator</a>
+                <a href="docs.html" class="btn btn-secondary">Read The Docs</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="perspective-section">
+        <div class="perspective-card">
+            <img src="https://qniverse.in/wp-content/uploads/2024/08/qacc-screenshots-8.png" alt="Quantum Lens Simulator Dashboard">
+        </div>
+    </section>
+
+    <section id="toolkit" class="features">
+    <h2>The Celestial Toolkit</h2>
+    
+    <div class="grid-container">
+        <a href="https://first-simulator-cctqcrgharin2xnj5d2dsk.streamlit.app/" class="card-wrapper">
+            <div class="feature-card">
+                <i class="fas fa-layer-group feature-icon"></i>
+                <h3>Quantum Gate Builder</h3>
+                <p>Build and simulate quantum circuits visually, with real-time Bloch sphere updates and partial tracing.</p>
+            </div>
+        </a>
+
+        <a href="https://second-simulator-quantum-kg6vybdtghx3n3icjqe6ll.streamlit.app/" class="card-wrapper">
+            <div class="feature-card">
+                <i class="fas fa-code feature-icon"></i>
+                <h3>Quantum Code Visualizer</h3>
+                <p>Convert code into visual quantum circuits with synchronized state visualization.</p>
+            </div>
+        </a>
+
+        <a href="https://third-simulator-bbcnurtyhenepqumfqyvqq.streamlit.app/" class="card-wrapper">
+            <div class="feature-card">
+                <i class="fas fa-file-code feature-icon"></i>
+                <h3>QASM Visualizer</h3>
+                <p>Load and analyze QASM files, explore assembly-level circuits, and understand their state effects.</p>
+            </div>
+        </a>
+    </div>
+</section>
+
+    <!-- ===== Quantum Learning Platform (new) — reuses the toolkit card styles ===== -->
+    <section id="academy" class="features ql-home-academy">
+    <h2>The Quantum Academy</h2>
+    <p class="ql-home-lead">Learn quantum computing by doing: structured lessons, a drag-and-drop circuit builder, code in Qiskit, Cirq, PennyLane or qBraid, and an AI tutor that knows what you are working on.</p>
+
+    <div class="grid-container">
+        <a href="learn.html" class="card-wrapper">
+            <div class="feature-card">
+                <i class="fas fa-graduation-cap feature-icon"></i>
+                <h3>Learning Hub</h3>
+                <p>Eight interactive modules — qubits, superposition, entanglement, gates, measurement, circuit design and algorithms — with a learning path that adapts to you.</p>
+            </div>
+        </a>
+
+        <a href="lab.html" class="card-wrapper">
+            <div class="feature-card">
+                <i class="fas fa-layer-group feature-icon"></i>
+                <h3>Circuit Builder &amp; Code Lab</h3>
+                <p>Drag gates onto wires or write code, and watch Bloch spheres, state vectors and measurement histograms update live.</p>
+            </div>
+        </a>
+
+        <a href="lab.html#rt-cmp" class="card-wrapper">
+            <div class="feature-card">
+                <i class="fas fa-server feature-icon"></i>
+                <h3>Multi-Backend Simulation</h3>
+                <p>Run the same circuit on Qiskit Aer, PennyLane, Cirq and qBraid and compare the results side by side.</p>
+            </div>
+        </a>
+
+        <a href="lab.html" class="card-wrapper">
+            <div class="feature-card">
+                <i class="fas fa-robot feature-icon"></i>
+                <h3>AI Quantum Tutor</h3>
+                <p>Explanations, code generation, debugging, error detection and optimisation tips for your own circuits.</p>
+            </div>
+        </a>
+
+        <a href="lab.html#tab=challenges" class="card-wrapper">
+            <div class="feature-card">
+                <i class="fas fa-trophy feature-icon"></i>
+                <h3>Quizzes &amp; Challenges</h3>
+                <p>40 quiz questions plus circuit-building and coding challenges with instant scores and feedback.</p>
+            </div>
+        </a>
+
+        <a href="dashboard.html" class="card-wrapper">
+            <div class="feature-card">
+                <i class="fas fa-chart-line feature-icon"></i>
+                <h3>Progress &amp; Instructor Dashboard</h3>
+                <p>Track your progress, or follow a whole class's completion, quiz performance and hardest topics.</p>
+            </div>
+        </a>
+    </div>
+    <div class="btn-container ql-home-cta">
+        <a href="learn.html" class="btn btn-primary ql-btn-solid">Start Learning</a>
+        <a href="docs.html#deliverables" class="btn btn-secondary ql-btn-outline">View Deliverables</a>
+    </div>
+</section>
+
+    <section class="testimonials">
+        <h2>What the Quantum Community Says</h2>
+        <div class="testimonial-grid">
+            <div class="quote-card">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p>"No phenomenon is a physical phenomenon until it is an observed phenomenon."</p>
+                <div class="author">
+                    <h4>John Archibald Wheeler</h4>
+                    <span>Theoretical Physicist</span>
+                </div>
+            </div>
+
+            <div class="quote-card">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p>"The task is not so much to see what no one has yet seen; but to think what no one has yet thought about that which everybody sees."</p>
+                <div class="author">
+                    <h4>Erwin Schrödinger</h4>
+                    <span>Nobel Laureate in Physics</span>
+                </div>
+            </div>
+
+            <div class="quote-card">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p>"The most beautiful thing we can experience is the mysterious. It is the source of all true art and science."</p>
+                <div class="author">
+                    <h4>Albert Einstein</h4>
+                    <span>Theoretical Physicist</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<div id="chat-widget-container">
+  <!-- Bot bubble -->
+  <div class="bot-bubble" onclick="toggleChat()">
+    <i class="fas fa-robot"></i>
+    <span class="pulse"></span>
+  </div>
+
+  <!-- Hidden chat iframe -->
+  <iframe 
+    id="quantum-chat"
+    src="https://cdn.botpress.cloud/webchat/v3.5/shareable.html?configUrl=https://files.bpcontent.cloud/2025/12/19/06/20251219065046-J2NG7930.json"
+    width="350"
+    height="500"
+    style="display:none; border:none; border-radius:10px; position:fixed; bottom:80px; right:20px; box-shadow:0 4px 12px rgba(0,0,0,0.2);"
+    allow="microphone; camera"
+  ></iframe>
+</div>
+
+<script>
+function toggleChat() {
+  const chat = document.getElementById("quantum-chat");
+  chat.style.display = (chat.style.display === "none") ? "block" : "none";
+}
+</script>
+
+
+    <section class="faqs">
+        <h2>Frequently Asked Questions (FAQs)</h2>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is Quantum Lens?
+                    <i class="fas fa-plus faq-toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Quantum Lens is an interactive, browser-based toolkit for quantum computing. It allows users to build, visualize, and simulate multi-qubit quantum circuits using a drag-and-drop interface.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do I need to install any software?
+                    <i class="fas fa-plus faq-toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>No. Quantum Lens is entirely web-based. You can access the full simulator and all features directly in your browser without any installation.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is it suitable for beginners?
+                    <i class="fas fa-plus faq-toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely. Our <b>Tutorials</b> section provides step-by-step guides, and the intuitive visual interface (including the Bloch Sphere) is designed to make complex quantum concepts accessible to newcomers.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What kind of quantum gates are supported?
+                    <i class="fas fa-plus faq-toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We support a wide range of standard quantum gates, including Pauli gates (X, Y, Z), Hadamard (H), Phase gates (S, T), Controlled gates (CNOT, CCX), and various rotation gates.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I export my quantum circuits?
+                    <i class="fas fa-plus faq-toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes. Circuits built in the simulator can be exported into standard formats, including OpenQASM, allowing you to run them on real quantum hardware or other simulators.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is Quantum Lens free to use?
+                    <i class="fas fa-plus faq-toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The core simulation and visualization tools are <b>completely free</b> to use.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Which quantum frameworks can I use?
+                    <i class="fas fa-plus faq-toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The <a href="lab.html">Quantum Lab</a> reads and writes <b>Qiskit, Cirq, PennyLane, qBraid and OpenQASM</b>, and runs circuits on Qiskit Aer, PennyLane, Cirq and qBraid through the optional Python backend — or instantly in your browser.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What can the AI Quantum Tutor do?
+                    <i class="fas fa-plus faq-toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>It explains concepts, walks through your circuit step by step, generates algorithm code, finds errors in your code, suggests optimisations and recommends what to learn next based on your progress.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Quantum Lens</h3>
+                <p>Glimpses into the Quantum Realm.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#toolkit">Simulator</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="learn.html">Learning Hub</a></li>
+                    <li><a href="docs.html">Docs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p>Email: blochbusters6@gmail.com</p>
+                <p>GitHub: QuantumLens/repo</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2025 Quantum Lens. All Rights Reserved.</p>
+            
+            <div class="credits">
+                <p><strong>Made by BlochBusters</strong></p>
+                <p class="thanks">Special Thanks to Dr. M Jahir Pasha</p>
+            </div>
+
+            <div class="team-section">
+                <h4>Our Team</h4>
+                <div class="team-grid">
+                    <span>Bijin Deva Reddy</span>
+                    <span>A Honey</span>
+                    <span>Y Rama Deekshitha</span>
+                    <span>P Lahari</span>
+                    <span>B Pranav Sai</span>
+                    <span>G Amareswar Prasad Reddy</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

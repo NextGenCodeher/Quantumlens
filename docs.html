@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docs | Quantum Lens</title>
+    <meta name="description" content="Documentation for the Quantum Lens quantum learning platform: features, backends, AI tutor, assessments, architecture, API and the delivery table.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/quantum.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <a href="index.html" class="logo"><img src="logo.png" alt="Quantum Lens Logo" class="nav-logo">Quantum Lens</a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#toolkit">Simulator</a></li>
+            <li><a href="tutorial.html">Tutorials</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="lab.html">Lab</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="docs.html" class="active">Docs</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container ql-docs">
+    <aside class="sidebar">
+        <h3>Documentation</h3>
+        <ul>
+            <li><a href="#overview">1. Overview</a></li>
+            <li><a href="#start">2. Getting started</a></li>
+            <li><a href="#learning">3. Learning Hub</a></li>
+            <li><a href="#builder">4. Circuit Builder</a></li>
+            <li><a href="#codelab">5. Code Lab</a></li>
+            <li><a href="#backends">6. Simulation backends</a></li>
+            <li><a href="#viz">7. Visualisations</a></li>
+            <li><a href="#tutor">8. AI Quantum Tutor</a></li>
+            <li><a href="#assess">9. Assessments</a></li>
+            <li><a href="#progress">10. Progress &amp; paths</a></li>
+            <li><a href="#instructor">11. Instructor dashboard</a></li>
+            <li><a href="#saving">12. Saving circuits</a></li>
+            <li><a href="#architecture">13. Architecture</a></li>
+            <li><a href="#api">14. API reference</a></li>
+            <li><a href="#testing">15. Testing</a></li>
+            <li><a href="#deliverables"><b>16. Delivery Table</b></a></li>
+            <li><a href="#notes">17. Limitations</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <section id="overview">
+            <h1>Quantum Lens Documentation</h1>
+            <p>Quantum Lens is an interactive toolkit for building, visualising and analysing quantum circuits. On top of the original home page, tutorials, Celestial Toolkit simulators and Quantum Assistant chatbot, it now includes an <strong>AI-powered quantum learning platform</strong>: structured modules, a drag-and-drop circuit builder, a multi-framework code lab, multi-backend simulation, rich visualisations, an AI tutor, assessments, progress tracking, personalised learning paths and an instructor dashboard.</p>
+            <div class="info-card"><strong>Where things are:</strong> <a href="learn.html">Learn</a> (modules, quizzes, learning path) · <a href="lab.html">Lab</a> (builder, code lab, backends, visualisations, challenges, saved circuits, tutor) · <a href="dashboard.html">Dashboard</a> (learner progress &amp; instructor analytics) · <a href="#deliverables">Delivery Table</a>.</div>
+        </section>
+
+        <section id="start">
+            <h2>Getting started</h2>
+            <p><strong>Option A — no install.</strong> Open <code>index.html</code> in a browser (or host the folder on any static web server). Everything works using the built-in JavaScript statevector engine; progress and saved circuits are stored in your browser.</p>
+            <p><strong>Option B — with real quantum frameworks.</strong> Start the optional Python backend. It serves the site <em>and</em> the API on one port and runs circuits on Qiskit Aer, PennyLane, Cirq and qBraid:</p>
+<pre><code>pip install -r backend/requirements.txt
+python backend/server.py
+# open http://localhost:8000</code></pre>
+            <p>The Lab detects the backend automatically (same origin, then <code>http://localhost:8000</code>). A custom URL can be set via the status pill in the Lab header.</p>
+        </section>
+
+        <section id="learning">
+            <h2>Learning Hub</h2>
+            <p>Eight modules, each with lessons, an interactive widget, a 5-question quiz and linked practice challenges:</p>
+            <table class="ql-table"><thead><tr><th>#</th><th>Module</th><th>Level</th><th>Interactive widget</th></tr></thead><tbody>
+                <tr><td>1</td><td>Quantum Computing Fundamentals</td><td>Beginner</td><td>Superposition circuit + probabilities</td></tr>
+                <tr><td>2</td><td>Qubits &amp; the Bloch Sphere</td><td>Beginner</td><td>Bloch-sphere gate playground</td></tr>
+                <tr><td>3</td><td>Superposition &amp; Interference</td><td>Beginner</td><td>H·H interference circuit</td></tr>
+                <tr><td>4</td><td>Entanglement</td><td>Intermediate</td><td>Bell-state circuit</td></tr>
+                <tr><td>5</td><td>Quantum Gates</td><td>Intermediate</td><td>Bloch-sphere gate playground</td></tr>
+                <tr><td>6</td><td>Measurement</td><td>Intermediate</td><td>RY(θ) Born-rule shot experiment</td></tr>
+                <tr><td>7</td><td>Circuit Design</td><td>Intermediate</td><td>Teleportation circuit</td></tr>
+                <tr><td>8</td><td>Standard Quantum Algorithms</td><td>Advanced</td><td>Grover search (DJ, BV, QFT, teleportation in the Lab)</td></tr>
+            </tbody></table>
+            <p>Opening a lesson marks it as read. The original <a href="tutorial.html">Tutorials</a> page remains the concise overview and now links into these modules.</p>
+        </section>
+
+        <section id="builder">
+            <h2>Circuit Builder (drag &amp; drop)</h2>
+            <ul class="ql-list">
+                <li><strong>Place gates:</strong> drag from the palette onto a wire, or click a gate then click a spot (works on touch screens). Hold <kbd>Shift</kbd> while clicking to keep placing the same gate.</li>
+                <li><strong>Edit:</strong> click a placed gate to open the inspector — change control/target qubits and angles (e.g. <code>pi/4</code>).</li>
+                <li><strong>Move / delete:</strong> drag a gate to a new spot; drag it back to the palette, double-click it or press <kbd>Delete</kbd> to remove it. <kbd>Ctrl+Z</kbd>/<kbd>Ctrl+Y</kbd> undo/redo.</li>
+                <li><strong>Gate set:</strong> H, X, Y, Z, S, S†, T, T†, P, RX, RY, RZ, √X, U, CX, CZ, CY, CH, CP, CRZ, SWAP, CCX, CSWAP, Measure, Barrier, Reset — 1 to 8 qubits.</li>
+                <li><strong>Examples:</strong> Bell, GHZ, teleportation, Deutsch–Jozsa, Bernstein–Vazirani, Grover (2 &amp; 3 qubits), QFT, phase kickback, QRNG and more.</li>
+                <li><strong>Send to Code Lab</strong> converts the circuit into Qiskit, Cirq, PennyLane, qBraid or OpenQASM code.</li>
+            </ul>
+        </section>
+
+        <section id="codelab">
+            <h2>Code Lab</h2>
+            <p>A code editor with line numbers, live parsing, error markers and a Problems list (with fix hints). Supported syntax:</p>
+            <table class="ql-table"><thead><tr><th>Framework</th><th>Understood in the browser</th></tr></thead><tbody>
+                <tr><td>OpenQASM 2 / 3</td><td><code>qreg</code>/<code>qubit[n]</code>, <code>creg</code>/<code>bit[n]</code>, qelib1 gates incl. <code>u1/u2/u3/cu1</code>, register broadcasting, <code>measure a -&gt; b</code> and <code>b = measure a</code>, barrier, reset</td></tr>
+                <tr><td>Qiskit</td><td><code>QuantumCircuit(n[, m])</code>, <code>QuantumRegister</code>, all gate methods above, <code>measure</code>, <code>measure_all</code>, lists/ranges as qubit args, variables, numpy/math constants, <code>for</code> loops; flags removed APIs (<code>execute</code>, <code>from qiskit import Aer</code>)</td></tr>
+                <tr><td>Cirq</td><td><code>LineQubit.range</code>, named qubits, <code>cirq.H/X/…/CNOT/CZ/SWAP/TOFFOLI/FREDKIN</code>, <code>rx/ry/rz(θ)(q)</code>, <code>ZPowGate/CZPowGate</code>, <code>X**0.5</code>, <code>S**-1</code>, <code>.on(...)</code>, <code>cirq.measure</code></td></tr>
+                <tr><td>PennyLane</td><td><code>qml.device(wires=n)</code>, qnode functions, Hadamard/Pauli/S/T/SX/RX/RY/RZ/PhaseShift/Rot/U3/CNOT/CZ/CY/CH/SWAP/Toffoli/CSWAP/controlled rotations, <code>qml.adjoint</code>, <code>probs/sample/counts</code> (observables inside <code>expval</code> are ignored)</td></tr>
+                <tr><td>qBraid</td><td>Programs that embed an OpenQASM string (<code>program = """…"""</code>) or a Qiskit/Cirq circuit and call <code>qbraid.transpile</code></td></tr>
+            </tbody></table>
+            <p>Changing the framework dropdown converts a valid program to the new framework. <kbd>Ctrl+Enter</kbd> runs the code.</p>
+        </section>
+
+        <section id="backends">
+            <h2>Simulation backends</h2>
+            <table class="ql-table"><thead><tr><th>Backend</th><th>With Python server</th><th>Without server</th></tr></thead><tbody>
+                <tr><td><b>Qiskit Aer</b></td><td><code>qiskit_aer.AerSimulator(method="statevector")</code>, statevector + shots</td><td rowspan="4">Runs on the in-browser statevector engine (ideal, noise-free — identical results) and says so in the Execution tab</td></tr>
+                <tr><td><b>PennyLane</b></td><td><code>default.qubit</code>, <code>qml.state()</code> + <code>qml.counts</code></td></tr>
+                <tr><td><b>Cirq</b></td><td><code>cirq.Simulator()</code> simulate + run</td></tr>
+                <tr><td><b>qBraid</b></td><td>Qiskit circuit → <code>qbraid.transpile(…, "cirq")</code> → Cirq simulator. qBraid-hosted devices can be added via <code>qbraid.runtime.QbraidProvider</code> with a <code>QBRAID_API_KEY</code></td></tr>
+                <tr><td><b>Browser engine</b></td><td colspan="2">JavaScript statevector simulator, up to 10 qubits, always available</td></tr>
+            </tbody></table>
+            <p><strong>Bit order.</strong> Qiskit is little-endian; Cirq and PennyLane are big-endian. The server maps qubits so every backend returns statevectors and counts in Qiskit order (right-most bit = q0), which is what makes the <em>Compare backends</em> view meaningful. <code>backend/test_backends.py</code> checks random circuits across all backends and the browser engine for statevector fidelity ≥ 1−10⁻⁶.</p>
+            <p><strong>Environment variables:</strong> <code>PORT</code> (8000), <code>HOST</code> (127.0.0.1), <code>QLENS_MAX_QUBITS</code> (20), <code>QLENS_SEED</code> (reproducible shots), <code>QLENS_DATA_DIR</code>, <code>ANTHROPIC_API_KEY</code>, <code>QLENS_TUTOR_MODEL</code>.</p>
+        </section>
+
+        <section id="viz">
+            <h2>Visualisations</h2>
+            <ul class="ql-list">
+                <li><strong>Bloch spheres</strong> for every qubit (drag to rotate). Entangled qubits show their reduced state (partial trace): the arrow shrinks and the purity drops.</li>
+                <li><strong>Probabilities &amp; counts:</strong> exact probabilities next to measured shot frequencies, with hover tooltips.</li>
+                <li><strong>State vector:</strong> amplitude, magnitude, phase (colour dial + degrees) and probability per basis state.</li>
+                <li><strong>Execution:</strong> backend, where it ran, shots, time, gate count, depth, counts table, JSON download.</li>
+                <li><strong>Step-through:</strong> the slider replays the circuit gate by gate, updating every view.</li>
+                <li><strong>Backend comparison:</strong> the same circuit on every backend with total-variation distance and state fidelity.</li>
+            </ul>
+        </section>
+
+        <section id="tutor">
+            <h2>AI Quantum Tutor</h2>
+            <p>The tutor panel (Lab and Learning Hub) sees the current circuit, code, parse errors, active challenge and your progress. Built-in capabilities (no API key needed):</p>
+            <ul class="ql-list">
+                <li><strong>Concept explanations</strong> from a 29-topic knowledge base, with analogies and “Try it” circuits.</li>
+                <li><strong>Explain my circuit</strong> — step-by-step state evolution, final state (recognises Bell/GHZ/uniform states), outcomes and entanglement.</li>
+                <li><strong>Code generation</strong> — Bell, GHZ, superposition, QRNG, teleportation, superdense coding, kickback, Deutsch–Jozsa, Bernstein–Vazirani (any secret), Grover (any 2–3 bit target) and QFT, in any of the five frameworks, with one-click load.</li>
+                <li><strong>Debugging &amp; error detection</strong> — syntax/API errors with line numbers and fixes, deprecated APIs, gates after measurement, controls that never fire, unused qubits.</li>
+                <li><strong>Optimisation</strong> — cancels inverse pairs, merges rotations, rewrites H·X·H→Z, S·S→Z, T·T→S, removes zero rotations; shows before/after gate count and depth and can apply the result.</li>
+                <li><strong>Personalised recommendations</strong> from your quiz scores, weak topics and challenge history; <strong>hints</strong> for active challenges.</li>
+            </ul>
+            <p><strong>LLM mode:</strong> set <code>ANTHROPIC_API_KEY</code> before starting the backend and open-ended questions are answered by Claude with the same context. The key stays on the server. The original Botpress <em>Quantum Assistant</em> bubble on the home page is unchanged.</p>
+        </section>
+
+        <section id="assess">
+            <h2>Assessments</h2>
+            <ul class="ql-list">
+                <li><strong>Quizzes:</strong> 40 questions (5 per module) with instant per-question feedback and explanations; pass mark 70%; best score and attempts are kept.</li>
+                <li><strong>Circuit-building challenges (12)</strong> and <strong>coding challenges (7)</strong>, graded automatically by state fidelity, unitary (process) fidelity or output distribution, plus rule checks (allowed/forbidden gates, gate limits, measurement, loops).</li>
+                <li><strong>Scoring:</strong> 100 for an optimal solution; −5 per gate above optimal (max −30); −10 per hint; minimum 50 when solved.</li>
+            </ul>
+        </section>
+
+        <section id="progress">
+            <h2>Progress tracking &amp; personalised learning paths</h2>
+            <p>Module progress = 50% lessons read + 30% quiz (full credit at ≥70%) + 20% challenges solved. A module is complete when all lessons are read and the quiz is passed.</p>
+            <p>The learning path is ordered by your <strong>goal</strong> (foundations, algorithms or coding) and your <strong>experience level</strong> marks earlier modules as optional review. Recommendations prioritise: quizzes to review (&lt;70%) → weak topics (&gt;40% wrong) → the module in progress (next unread lesson) → the next module → open challenges in modules you've mastered.</p>
+        </section>
+
+        <section id="instructor">
+            <h2>Instructor dashboard</h2>
+            <p>Learners enter a class code under <em>Dashboard → Join a class</em>. With the backend running, progress syncs automatically; instructors load the class by code. Without the backend, learners export a progress file and instructors import many files at once. A <em>sample cohort</em> (clearly labelled synthetic data) is available for exploring.</p>
+            <p>Analytics: learner count and weekly activity, average completion, average quiz score, challenge pass rate, learners needing attention, module completion and quiz-score charts, hardest topics, per-challenge performance, a sortable roster with status (On track / Review / Needs attention / Inactive), per-learner drill-down with suggested next steps, and CSV export.</p>
+        </section>
+
+        <section id="saving">
+            <h2>Saving &amp; managing circuits</h2>
+            <p><em>Save</em> in the Circuit Builder stores the circuit with a name, description and tags under <em>My Circuits</em>: open, open as code, rename, duplicate, export (JSON), delete, search, import (.json or .qasm), export all. <em>Share</em> copies a link that encodes the circuit. When the backend is connected, saved circuits are mirrored to it.</p>
+        </section>
+
+        <section id="architecture">
+            <h2>Architecture</h2>
+            <p>A static, framework-free front end (matching the original HTML/CSS/JS site) with modular scripts, plus an optional Python service.</p>
+<pre><code>index.html, tutorial.html, style.css, script.js   original site (extended with links/sections)
+learn.html · lab.html · dashboard.html · docs.html   new pages (same header, footer, styles)
+assets/css/quantum.css      new components; reuses style.css variables
+assets/js/qcore.js          circuit IR, gate library, statevector simulator, Bloch vectors,
+                            metrics, optimiser, code generation (Qiskit/Cirq/PennyLane/qBraid/QASM)
+assets/js/qparser.js        multi-framework parser → IR, with line-numbered errors & hints
+assets/js/qcontent.js       modules, lessons, quizzes, challenges, examples, tutor knowledge base
+assets/js/qstore.js         storage, progress, grading, learning paths, saved circuits, backend client
+assets/js/qviz.js           Bloch sphere, charts, state table, circuit SVG, toasts, markdown
+assets/js/qtutor.js         AI tutor engine + chat component
+assets/js/lab.js · learn.js · dashboard.js           page controllers
+backend/server.py           FastAPI: /api/simulate (4 frameworks), /api/tutor, class progress, circuits
+backend/test_backends.py    cross-backend verification        tests/*.test.js   engine tests (Node)</code></pre>
+            <h3>Extending</h3>
+            <ul class="ql-list">
+                <li><strong>New module / quiz / challenge:</strong> add an object to <code>QL.MODULES</code> or <code>QL.CHALLENGES</code> in <code>qcontent.js</code> — pages render from data.</li>
+                <li><strong>New gate:</strong> <code>def()</code> it in <code>qcore.js</code>, add codegen/parser mappings and <code>GATE_ARITY</code> in the server.</li>
+                <li><strong>New backend:</strong> add a <code>run_x()</code> function to <code>RUNNERS</code> in <code>server.py</code> and an entry in <code>QL.BACKENDS</code>.</li>
+            </ul>
+        </section>
+
+        <section id="api">
+            <h2>API reference</h2>
+            <table class="ql-table"><thead><tr><th>Endpoint</th><th>Purpose</th></tr></thead><tbody>
+                <tr><td><code>GET /api/health</code></td><td>Service info, installed backends with versions, LLM availability</td></tr>
+                <tr><td><code>POST /api/simulate</code></td><td><code>{backend, shots, circuit:{num_qubits, ops:[{gate,targets,controls,params}]}}</code> → statevector, probabilities, counts, time, version, notes</td></tr>
+                <tr><td><code>POST /api/tutor</code></td><td><code>{message, context}</code> → <code>{reply, source:"llm"}</code></td></tr>
+                <tr><td><code>POST /api/progress</code></td><td>Upsert a learner's progress for a class code</td></tr>
+                <tr><td><code>GET /api/class/{code}</code></td><td>All learners' progress for a class</td></tr>
+                <tr><td><code>GET/POST /api/circuits</code>, <code>DELETE /api/circuits/{id}</code></td><td>Saved-circuit mirror per learner</td></tr>
+            </tbody></table>
+        </section>
+
+        <section id="testing">
+            <h2>Testing</h2>
+<pre><code>node tests/core.test.js        # simulator, parsers (round-trip in all 5 frameworks), optimiser
+node tests/content.test.js     # every challenge solvable, examples, grading, learning path
+node tests/tutor.test.js       # generators (Grover/BV/DJ/QFT...), tutor intents, codegen round-trips
+python backend/test_backends.py  # random circuits: Qiskit Aer = Cirq = PennyLane = qBraid = browser engine</code></pre>
+        </section>
+
+        <section id="deliverables">
+            <h2>Delivery Table (Expected Deliverables)</h2>
+            <div class="ql-table-wrap">
+            <table class="ql-table ql-deliverables"><thead><tr><th>#</th><th>Deliverable</th><th>What is delivered</th><th>Where</th><th>Status</th></tr></thead><tbody>
+                <tr><td>01</td><td>Interactive Quantum Learning Platform</td><td>8 structured modules (fundamentals, qubits, superposition, entanglement, gates, measurement, circuit design, algorithms) with 23 lessons, interactive widgets and practice links, integrated into the existing site navigation and tutorials.</td><td><a href="learn.html">learn.html</a>, <a href="tutorial.html#learning-path">tutorial.html</a></td><td><span class="ql-badge ql-badge-ok">Delivered</span></td></tr>
+                <tr><td>02</td><td>Quantum Circuit Builder</td><td>Drag-and-drop and click-to-place builder, 26 palette gates, 1–8 qubits, inspector for qubits/angles, move/delete, undo/redo, examples, step-through.</td><td><a href="lab.html">Lab → Circuit Builder</a></td><td><span class="ql-badge ql-badge-ok">Delivered</span></td></tr>
+                <tr><td>03</td><td>Quantum Code Lab</td><td>Code editor for Qiskit, Cirq, PennyLane, qBraid and OpenQASM 2/3 with live parsing, error markers, fix hints, templates, framework conversion and builder sync.</td><td><a href="lab.html#tab=code">Lab → Code Lab</a></td><td><span class="ql-badge ql-badge-ok">Delivered</span></td></tr>
+                <tr><td>04</td><td>Multi-Backend Simulation</td><td>Qiskit Aer, PennyLane, Cirq and qBraid via the Python backend; browser statevector engine as fallback; backend comparison view; cross-backend tests.</td><td><a href="#backends">Docs → Backends</a>, <code>backend/server.py</code></td><td><span class="ql-badge ql-badge-ok">Delivered</span></td></tr>
+                <tr><td>05</td><td>Quantum Visualization</td><td>Interactive Bloch spheres (with reduced states), probability &amp; counts charts, state-vector table with phases, execution results, step-through, circuit diagrams.</td><td><a href="lab.html">Lab → Results</a>, <a href="learn.html">Learn widgets</a></td><td><span class="ql-badge ql-badge-ok">Delivered</span></td></tr>
+                <tr><td>06</td><td>AI Quantum Tutor</td><td>Context-aware tutor: concept explanations, circuit walkthroughs, code generation in 5 frameworks, debugging and error detection, optimisation, recommendations, challenge hints; optional Claude LLM mode.</td><td>Lab &amp; Learn tutor panels, <a href="#tutor">Docs</a></td><td><span class="ql-badge ql-badge-ok">Delivered</span></td></tr>
+                <tr><td>07</td><td>Assessment Module</td><td>40 quiz questions with feedback, 12 circuit-building and 7 coding challenges with automatic grading, rules, hints and scores.</td><td><a href="learn.html">Learn quizzes</a>, <a href="lab.html#tab=challenges">Lab → Challenges</a></td><td><span class="ql-badge ql-badge-ok">Delivered</span></td></tr>
+                <tr><td>08</td><td>Progress Tracking</td><td>Per-module progress, quiz history, challenge scores, points, levels, streaks, activity feed; export/import; class sync.</td><td><a href="dashboard.html">Dashboard → My Progress</a></td><td><span class="ql-badge ql-badge-ok">Delivered</span></td></tr>
+                <tr><td>09</td><td>Personalized Learning</td><td>Learning path adapted to goal and experience level; recommendations from weak topics, failed quizzes, in-progress lessons and open challenges.</td><td><a href="learn.html#path">Learn → Your Learning Path</a></td><td><span class="ql-badge ql-badge-ok">Delivered</span></td></tr>
+                <tr><td>10</td><td>Instructor Dashboard</td><td>Cohort KPIs, module completion and quiz charts, hardest topics, challenge analytics, sortable roster with status, learner drill-down, CSV export; data via class code, file import or sample cohort.</td><td><a href="dashboard.html#instructor">Dashboard → Instructor</a></td><td><span class="ql-badge ql-badge-ok">Delivered</span></td></tr>
+                <tr><td>11</td><td>Scalable / Modular Architecture</td><td>Framework-neutral circuit IR, separated engine/parser/content/state/visualisation/tutor modules, data-driven content, pluggable backends, REST API, automated tests.</td><td><a href="#architecture">Docs → Architecture</a></td><td><span class="ql-badge ql-badge-ok">Delivered</span></td></tr>
+                <tr><td>12</td><td>Documentation</td><td>This documentation page, <code>README.md</code> (setup, structure, API, tests) and inline code comments.</td><td><a href="docs.html">docs.html</a>, <code>README.md</code></td><td><span class="ql-badge ql-badge-ok">Delivered</span></td></tr>
+            </tbody></table>
+            </div>
+        </section>
+
+        <section id="notes">
+            <h2>Limitations &amp; notes</h2>
+            <ul class="ql-list">
+                <li>Simulations are ideal (noise-free). Measurements are treated as terminal; <em>reset</em> in the browser engine is an approximation (exact on the Python backend).</li>
+                <li>The browser parser covers the common learning subset of each framework; full programs (custom functions, classical control) run on the Python backend.</li>
+                <li>Progress and saved circuits live in the browser unless the backend is used. The instructor view has no authentication — add your institution's login in front of the backend for production use.</li>
+                <li>The Celestial Toolkit simulators on Streamlit and the Botpress Quantum Assistant remain as before.</li>
+            </ul>
+        </section>
+    </main>
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col"><h3>Quantum Lens</h3><p>Glimpses into the Quantum Realm.</p></div>
+        <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="index.html#toolkit">Simulator</a></li><li><a href="tutorial.html">Tutorials</a></li><li><a href="learn.html">Learning Hub</a></li></ul></div>
+        <div class="footer-col"><h3>Contact</h3><p>Email: blochbusters6@gmail.com</p><p>GitHub: QuantumLens/repo</p></div>
+    </div>
+    <div class="footer-bottom">
+        <p class="copyright">&copy; 2025 Quantum Lens. All Rights Reserved.</p>
+            <div class="credits"><p><strong>Made by BlochBusters</strong></p><p class="thanks">Special Thanks to Dr. M Jahir Pasha</p></div>
+            <div class="team-section">
+                <h4>Our Team</h4>
+                <div class="team-grid">
+                    <span>Bijin Deva Reddy</span>
+                    <span>A Honey</span>
+                    <span>Y Rama Deekshitha</span>
+                    <span>P Lahari</span>
+                    <span>B Pranav Sai</span>
+                    <span>G Amareswar Prasad Reddy</span>
+                </div>
+            </div>
+    </div>
+</footer>
+
+</body>
+</html>

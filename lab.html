@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Lab | Quantum Lens</title>
+    <meta name="description" content="Drag-and-drop quantum circuit builder, multi-framework code lab, multi-backend simulation, Bloch sphere visualisation and an AI quantum tutor.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/quantum.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="index.html" class="logo"><img src="logo.png" alt="Quantum Lens Logo" class="nav-logo">Quantum Lens</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#toolkit">Simulator</a></li>
+                <li><a href="tutorial.html">Tutorials</a></li>
+                <li><a href="learn.html">Learn</a></li>
+                <li><a href="lab.html" class="active">Lab</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="docs.html">Docs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="ql-hero">
+        <div class="ql-hero-inner">
+            <div>
+                <div class="ql-crumbs"><a href="index.html">Home</a> / Quantum Lab</div>
+                <h1>Quantum Lab</h1>
+                <p>Build circuits by drag-and-drop or in code, run them on Qiskit Aer, PennyLane, Cirq or qBraid, and watch Bloch spheres, amplitudes and measurement results update live.</p>
+            </div>
+            <button type="button" class="ql-pill" id="backend-pill" title="Simulation backend status — click for settings"><span class="dot"></span><span id="backend-pill-text">Checking backends…</span></button>
+        </div>
+    </section>
+
+    <main class="ql-wrap">
+        <div class="ql-lab-grid">
+            <div class="ql-lab-main">
+                <div class="ql-tabs" role="tablist" aria-label="Lab tools">
+                    <button class="ql-tab" role="tab" id="tab-builder" aria-controls="panel-builder" aria-selected="true"><i class="fas fa-layer-group"></i> Circuit Builder</button>
+                    <button class="ql-tab" role="tab" id="tab-code" aria-controls="panel-code" aria-selected="false"><i class="fas fa-code"></i> Code Lab</button>
+                    <button class="ql-tab" role="tab" id="tab-challenges" aria-controls="panel-challenges" aria-selected="false"><i class="fas fa-trophy"></i> Challenges <span class="ql-badge ql-badge-purple" id="ch-count"></span></button>
+                    <button class="ql-tab" role="tab" id="tab-saved" aria-controls="panel-saved" aria-selected="false"><i class="fas fa-folder-open"></i> My Circuits <span class="ql-badge ql-badge-muted" id="saved-count"></span></button>
+                </div>
+
+                <div id="active-challenge"></div>
+
+                <!-- ============ CIRCUIT BUILDER ============ -->
+                <section class="ql-panel" id="panel-builder" role="tabpanel" aria-labelledby="tab-builder">
+                    <div class="ql-toolbar">
+                        <span class="ql-qcount">Qubits <button type="button" id="q-minus" aria-label="Remove qubit">−</button><span id="q-num">2</span><button type="button" id="q-plus" aria-label="Add qubit">+</button></span>
+                        <span class="ql-sep"></span>
+                        <button class="ql-btn ql-btn-small" id="b-undo" title="Undo (Ctrl+Z)" aria-label="Undo"><i class="fas fa-rotate-left"></i></button>
+                        <button class="ql-btn ql-btn-small" id="b-redo" title="Redo (Ctrl+Y)" aria-label="Redo"><i class="fas fa-rotate-right"></i></button>
+                        <button class="ql-btn ql-btn-small" id="b-clear"><i class="fas fa-eraser"></i> Clear</button>
+                        <label class="ql-sr" for="b-example">Load example</label>
+                        <select class="ql-select" id="b-example"><option value="">Load example…</option></select>
+                        <span class="ql-spacer"></span>
+                        <button class="ql-btn ql-btn-small" id="b-save"><i class="fas fa-floppy-disk"></i> Save</button>
+                        <button class="ql-btn ql-btn-small" id="b-share"><i class="fas fa-link"></i> Share</button>
+                        <button class="ql-btn ql-btn-small" id="b-tocode"><i class="fas fa-code"></i> Send to Code Lab</button>
+                    </div>
+                    <div class="ql-palette" id="palette" aria-label="Gate palette"></div>
+                    <div class="ql-grid-scroll"><div class="ql-grid" id="grid" aria-label="Circuit canvas"></div></div>
+                    <div class="ql-inspector" id="inspector"></div>
+                </section>
+
+                <!-- ============ CODE LAB ============ -->
+                <section class="ql-panel" id="panel-code" role="tabpanel" aria-labelledby="tab-code" hidden>
+                    <div class="ql-toolbar">
+                        <label class="ql-sr" for="c-framework">Framework</label>
+                        <select class="ql-select" id="c-framework">
+                            <option value="auto">Auto-detect</option>
+                            <option value="qiskit">Qiskit</option>
+                            <option value="cirq">Cirq</option>
+                            <option value="pennylane">PennyLane</option>
+                            <option value="qbraid">qBraid</option>
+                            <option value="qasm">OpenQASM</option>
+                        </select>
+                        <label class="ql-sr" for="c-template">Template</label>
+                        <select class="ql-select" id="c-template"><option value="">Insert template…</option></select>
+                        <span class="ql-spacer"></span>
+                        <button class="ql-btn ql-btn-small" id="c-frombuilder" title="Generate code from the Circuit Builder in the selected framework"><i class="fas fa-wand-magic-sparkles"></i> From Builder</button>
+                        <button class="ql-btn ql-btn-small" id="c-tobuilder"><i class="fas fa-layer-group"></i> Load into Builder</button>
+                        <button class="ql-btn ql-btn-small" id="c-download" title="Download code" aria-label="Download code"><i class="fas fa-download"></i></button>
+                        <button class="ql-btn ql-btn-small ql-btn-primary" id="c-run"><i class="fas fa-play"></i> Run code</button>
+                    </div>
+                    <div class="ql-editor">
+                        <div class="ql-gutter" id="gutter" aria-hidden="true"></div>
+                        <label class="ql-sr" for="code">Quantum code editor</label>
+                        <textarea id="code" class="ql-code-area" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+                    </div>
+                    <div class="ql-problems" id="problems" aria-live="polite"></div>
+                    <p class="ql-muted ql-small" style="margin-top:8px">The editor understands the common subset of Qiskit, Cirq, PennyLane, qBraid and OpenQASM 2/3 (gates, registers, variables, numpy constants and <code>for</code> loops). Anything beyond that can be run on the Python backend.</p>
+                </section>
+
+                <!-- ============ CHALLENGES ============ -->
+                <section class="ql-panel" id="panel-challenges" role="tabpanel" aria-labelledby="tab-challenges" hidden>
+                    <div class="ql-toolbar">
+                        <label class="ql-sr" for="ch-filter">Filter challenges</label>
+                        <select class="ql-select" id="ch-filter">
+                            <option value="all">All challenges</option>
+                            <option value="circuit">Circuit-building</option>
+                            <option value="code">Coding</option>
+                            <option value="open">Not yet solved</option>
+                        </select>
+                        <span class="ql-spacer"></span>
+                        <span class="ql-muted ql-small" id="ch-summary"></span>
+                    </div>
+                    <div class="ql-grid-3" id="ch-list"></div>
+                </section>
+
+                <!-- ============ SAVED CIRCUITS ============ -->
+                <section class="ql-panel" id="panel-saved" role="tabpanel" aria-labelledby="tab-saved" hidden>
+                    <div class="ql-toolbar">
+                        <label class="ql-sr" for="s-search">Search saved circuits</label>
+                        <input class="ql-input" id="s-search" type="search" placeholder="Search by name or tag…">
+                        <span class="ql-spacer"></span>
+                        <label class="ql-btn ql-btn-small" for="s-import"><i class="fas fa-file-import"></i> Import (.json / .qasm)</label>
+                        <input type="file" id="s-import" accept=".json,.qasm,.txt" hidden>
+                        <button class="ql-btn ql-btn-small" id="s-exportall"><i class="fas fa-file-export"></i> Export all</button>
+                    </div>
+                    <div class="ql-saved" id="saved-list"></div>
+                </section>
+            </div>
+
+            <aside class="ql-lab-side" aria-label="AI Quantum Tutor">
+                <div id="tutor"></div>
+            </aside>
+        </div>
+
+        <!-- ============ RESULTS ============ -->
+        <section class="ql-results" aria-label="Simulation results">
+            <div class="ql-run-bar">
+                <label for="r-backend">Backend
+                    <select class="ql-select" id="r-backend"></select>
+                </label>
+                <label for="r-shots">Shots
+                    <input class="ql-input" id="r-shots" type="number" min="1" max="100000" step="1" value="1024" style="width:96px">
+                </label>
+                <button class="ql-btn ql-btn-accent" id="r-run"><i class="fas fa-play"></i> Run</button>
+                <button class="ql-btn ql-btn-ghost" id="r-compare" title="Run on every backend and compare"><i class="fas fa-code-compare"></i> Compare backends</button>
+                <span class="ql-spacer"></span>
+                <span class="ql-small" id="r-source" style="opacity:.85"></span>
+            </div>
+            <div class="ql-results-body">
+                <div class="ql-step">
+                    <label for="r-step"><i class="fas fa-shoe-prints"></i> Step through</label>
+                    <input type="range" id="r-step" min="0" max="0" value="0">
+                    <span id="r-step-label">All steps</span>
+                </div>
+                <div class="ql-tabs" role="tablist" aria-label="Result views">
+                    <button class="ql-tab" role="tab" id="rt-bloch" aria-controls="rp-bloch" aria-selected="true">Bloch spheres</button>
+                    <button class="ql-tab" role="tab" id="rt-prob" aria-controls="rp-prob" aria-selected="false">Probabilities &amp; counts</button>
+                    <button class="ql-tab" role="tab" id="rt-sv" aria-controls="rp-sv" aria-selected="false">State vector</button>
+                    <button class="ql-tab" role="tab" id="rt-exec" aria-controls="rp-exec" aria-selected="false">Execution</button>
+                    <button class="ql-tab" role="tab" id="rt-cmp" aria-controls="rp-cmp" aria-selected="false">Backend comparison</button>
+                </div>
+                <div class="ql-panel" id="rp-bloch" role="tabpanel"><div id="state-desc" class="ql-note ql-note-info"></div><div class="ql-bloch-grid" id="bloch-grid"></div></div>
+                <div class="ql-panel" id="rp-prob" role="tabpanel" hidden><div class="ql-row" style="margin-bottom:6px"><span class="ql-muted ql-small" id="prob-caption"></span><span class="ql-spacer"></span><label class="ql-small"><input type="checkbox" id="prob-all"> Show every basis state</label></div><div id="prob-chart"></div></div>
+                <div class="ql-panel" id="rp-sv" role="tabpanel" hidden><div id="sv-table"></div></div>
+                <div class="ql-panel" id="rp-exec" role="tabpanel" hidden><div id="exec"></div></div>
+                <div class="ql-panel" id="rp-cmp" role="tabpanel" hidden><div id="cmp"><div class="ql-empty"><i class="fas fa-code-compare"></i>Press <b>Compare backends</b> to run this circuit on every backend and compare the results.</div></div></div>
+            </div>
+        </section>
+    </main>
+
+    <dialog class="ql-dialog" id="dlg-save">
+        <form method="dialog">
+            <h3><i class="fas fa-floppy-disk"></i> Save circuit</h3>
+            <label>Name <input class="ql-input" name="name" required maxlength="80"></label>
+            <label>Description <textarea class="ql-textarea" name="description" rows="2" maxlength="400"></textarea></label>
+            <label>Tags (comma separated) <input class="ql-input" name="tags" maxlength="120" placeholder="bell, entanglement"></label>
+            <div class="ql-row"><span class="ql-spacer"></span><button class="ql-btn" value="cancel" formnovalidate>Cancel</button><button class="ql-btn ql-btn-primary" value="ok">Save</button></div>
+        </form>
+    </dialog>
+
+    <dialog class="ql-dialog" id="dlg-backend">
+        <form method="dialog">
+            <h3><i class="fas fa-server"></i> Simulation backends</h3>
+            <div id="backend-status"></div>
+            <label>Python backend URL <input class="ql-input" name="url" placeholder="http://localhost:8000 (leave empty to auto-detect)"></label>
+            <p class="ql-muted ql-small">Start it with <code>python backend/server.py</code> — see <a href="docs.html#backends">Docs → Backends</a>. Without it, all circuits run on the in-browser statevector engine.</p>
+            <div class="ql-row"><span class="ql-spacer"></span><button class="ql-btn" value="cancel">Close</button><button class="ql-btn ql-btn-primary" value="ok">Save &amp; reconnect</button></div>
+        </form>
+    </dialog>
+
+    <dialog class="ql-dialog" id="dlg-grade">
+        <div>
+            <div id="grade-body"></div>
+            <div class="ql-row"><span class="ql-spacer"></span><button class="ql-btn ql-btn-primary" id="grade-close">Close</button></div>
+        </div>
+    </dialog>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col"><h3>Quantum Lens</h3><p>Glimpses into the Quantum Realm.</p></div>
+            <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="index.html#toolkit">Simulator</a></li><li><a href="tutorial.html">Tutorials</a></li><li><a href="learn.html">Learning Hub</a></li></ul></div>
+            <div class="footer-col"><h3>Contact</h3><p>Email: blochbusters6@gmail.com</p><p>GitHub: QuantumLens/repo</p></div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2025 Quantum Lens. All Rights Reserved.</p>
+            <div class="credits"><p><strong>Made by BlochBusters</strong></p><p class="thanks">Special Thanks to Dr. M Jahir Pasha</p></div>
+            <div class="team-section">
+                <h4>Our Team</h4>
+                <div class="team-grid">
+                    <span>Bijin Deva Reddy</span>
+                    <span>A Honey</span>
+                    <span>Y Rama Deekshitha</span>
+                    <span>P Lahari</span>
+                    <span>B Pranav Sai</span>
+                    <span>G Amareswar Prasad Reddy</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/qcore.js"></script>
+    <script src="assets/js/qparser.js"></script>
+    <script src="assets/js/qcontent.js"></script>
+    <script src="assets/js/qstore.js"></script>
+    <script src="assets/js/qviz.js"></script>
+    <script src="assets/js/qtutor.js"></script>
+    <script src="assets/js/lab.js"></script>
+</body>
+</html>

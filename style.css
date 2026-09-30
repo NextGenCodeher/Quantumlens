@@ -1,0 +1,855 @@
+/* --- GLOBAL SETTINGS & RESET --- */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; 
+}
+
+:root {
+    --primary-purple: #260859;
+    --accent-purple: #3d0d8e;
+    --highlight-blue: #4facfe;
+    --text-color: #333;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--white);
+}
+
+/* --- NAVIGATION --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 5%; /* Slightly reduced padding for a tighter look */
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between the image and text */
+    font-family: 'Orbitron', sans-serif; 
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary-purple);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px; 
+}
+
+.nav-logo {
+    height: 45px; /* Adjust this height to match your header size */
+    width: auto;
+    display: block;
+    /* Optional: if your image has a white background you want to blend */
+    mix-blend-mode: multiply; 
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent-purple);
+}
+
+/* --- CHATBOT FLOATING BUTTON --- */
+#chat-widget-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 2000; /* Higher than your header (1000) */
+}
+
+.bot-bubble {
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg, var(--accent-purple), var(--highlight-blue));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.bot-bubble i {
+    color: white;
+    font-size: 28px;
+}
+
+/* Pulsing effect to draw attention */
+.pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--highlight-blue);
+    opacity: 0.5;
+    z-index: -1;
+    animation: bot-pulse 2s infinite;
+}
+
+@keyframes bot-pulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Hover Effects */
+#quantum-bot-button:hover .bot-bubble {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(79, 172, 254, 0.4);
+}
+
+/* Tooltip for the bot */
+#quantum-bot-button::after {
+    content: "Ask Quantum Assistant";
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-purple);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+#quantum-bot-button:hover::after {
+    opacity: 1;
+}
+
+
+/* --- HERO SECTION --- */
+/* --- HERO SECTION --- */
+.hero {
+    /* Lower the opacity (0.5 and 0.6) so the image is visible through the tint */
+    background-image: linear-gradient(rgba(38, 8, 89, 0.5), rgba(0, 0, 0, 0.6)), url('Quantum.png');
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll; 
+    color: var(--white);
+    padding: 100px 5% 170px;
+    text-align: center;
+    position: relative;
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Fallback color in case the image fails to load */
+    background-color: var(--primary-purple); 
+}
+
+/* Updated Branding Q with Orbitron */
+.large-q {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(5rem, 12vw, 9rem);
+    font-weight: 900;
+    color: #ff8c00;
+    display: block;
+    margin: -10px 0 20px 0;
+    text-shadow: 0 0 30px rgba(255, 140, 0, 0.8);
+    line-height: 1;
+}
+
+
+/* Ensure the hero heading stands out against the detailed background */
+.hero h1 {
+    font-size: 4rem;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 25px;
+    line-height: 1.2;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Adds depth to text */
+    position: relative;
+    z-index: 2;
+}
+
+.typing-highlight {
+    color: var(--highlight-blue);
+    font-weight: 600;
+}
+
+.typing-cursor::after {
+    content: '|';
+    animation: blink 1s step-start infinite;
+    color: var(--highlight-blue);
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.hero p {
+    font-size: 1.25rem;
+    max-width: 750px;
+    margin: 0 auto 50px;
+    opacity: 0.9;
+    font-weight: 300;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 2;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 14px 35px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary {
+    background: var(--white);
+    color: var(--primary-purple);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--white);
+    color: var(--white);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* --- 3D PERSPECTIVE SECTION --- */
+.perspective-section {
+    padding: 0 5%;
+    margin-top: -100px; /* Pulls the card up into the Hero background */
+    display: flex;
+    justify-content: center;
+    perspective: 1200px;
+    z-index: 10;
+    position: relative;
+    /* This marks the end of the background area */
+    background: transparent; 
+}
+
+.perspective-card {
+    background: var(--white);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    transform: rotateX(10deg) rotateY(0deg); 
+    transition: transform 0.5s ease;
+    max-width: 900px;
+}
+
+.perspective-card:hover {
+    transform: rotateX(0deg) rotateY(0deg);
+}
+
+.perspective-card img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+
+/* --- FEATURES GRID --- */
+.features {
+    padding: 100px 5%;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 3rem;
+    color: rgba(38, 8, 89, 0.85);
+    margin-bottom: 70px;
+    position: relative;
+    display: inline-block;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    padding: 40px 30px;
+    border-radius: 15px;
+    background: var(--light-bg);
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    background: var(--white);
+}
+
+.feature-icon {
+    font-size: 4rem;
+    color: var(--primary-purple);
+    margin-bottom: 25px;
+}
+
+/* --- TESTIMONIALS --- */
+.testimonials {
+    padding: 100px 5%;
+    background-color: var(--primary-purple);
+    color: var(--white);
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 70px;
+    position: relative;
+    display: inline-block;
+}
+
+.testimonials h2:after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 4px;
+    background-color: var(--highlight-blue);
+    left: 20%;
+    bottom: -10px;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.quote-card {
+    background: var(--white);
+    color: var(--text-color);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: left;
+}
+
+/* --- FAQ SECTION --- */
+.faqs {
+    padding: 60px 5%;
+    background-color: #f8f8fa;
+    text-align: center;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-item {
+    background-color: var(--white);
+    border: 1px solid #e0e0f0;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 18px 25px;
+    font-weight: 600;
+    color: var(--primary-purple);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.faq-answer {
+    padding: 0 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.4s ease-out;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding: 18px 25px;
+}
+
+/* --- FOOTER SECTION (Increased Font Sizes) --- */
+footer {
+    background: var(--primary-purple);
+    color: var(--white);
+    padding: 40px 5% 20px;
+    text-align: center;
+    font-family: 'Inter', 'Open Sans', sans-serif;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto 5px auto; 
+}
+
+.footer-col h3 {
+    font-size: 1.25rem; /* Increased from 0.95rem */
+    font-weight: 800; 
+    margin-bottom: 8px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.footer-col p, 
+.footer-col li {
+    font-size: 1rem; /* Increased from 0.85rem */
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75); 
+    margin-bottom: 4px;
+    list-style: none;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.footer-col a:hover {
+    color: var(--white);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px; 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.copyright {
+    font-size: 0.9rem; /* Increased from 0.75rem */
+    font-weight: 400;
+    opacity: 0.6; 
+    letter-spacing: 0.5px;
+    margin-bottom: 5px; 
+}
+
+.credits p strong, 
+.team-section h4 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    display: block;
+}
+
+.thanks {
+    font-size: 0.95rem; /* Increased from 0.8rem */
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 3px 40px;
+}
+
+.team-grid span {
+    font-size: 0.85rem; /* Increased from 0.85rem */
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    nav ul { gap: 15px; }
+    .footer-grid { text-align: center; }
+    .team-grid { grid-template-columns: 1fr; gap: 8px; }
+}
+
+/* Resets the link to look exactly like a normal div */
+.card-wrapper {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    outline: none;
+    cursor: default; /* Keeps the arrow cursor if you don't want the hand pointer */
+}
+
+.card-wrapper:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Ensure the titles don't change color to the default link blue */
+.feature-card h3 {
+    color: var(--primary-purple);
+}
+
+/* Ensure paragraph text inside the link stays grey */
+.feature-card p {
+    color: #666;
+}
+/* --- TUTORIAL PAGE SPECIFIC LAYOUT --- */
+.tutorial-wrapper {
+    display: flex;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 5%;
+    gap: 40px;
+}
+
+.sidebar {
+    width: 250px;
+    position: sticky;
+    top: 100px; /* Sticks below the header */
+    height: fit-content;
+    text-align: left;
+    border-right: 1px solid #eee;
+    padding-right: 20px;
+}
+
+.sidebar h3 {
+    color: var(--primary-purple);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li a {
+    display: block;
+    padding: 10px 0;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    border-bottom: 1px solid #f9f9f9;
+    transition: 0.3s;
+}
+
+.sidebar li a:hover {
+    color: var(--highlight-blue);
+    padding-left: 5px;
+}
+
+.main-content {
+    flex: 1;
+    text-align: left;
+}
+
+.main-content section {
+    margin-bottom: 80px;
+    scroll-margin-top: 100px; /* Ensures clicking sidebar links doesn't hide headers under nav */
+}
+
+.main-content h1 {
+    font-size: 2.8rem;
+    color: var(--primary-purple);
+    margin-bottom: 20px;
+}
+
+.main-content h2 {
+    font-size: 2rem;
+    color: var(--accent-purple);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--light-bg);
+    display: inline-block;
+}
+
+/* Tutorial UI Elements */
+.gate-grid, .academy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.gate-card, .course-card {
+    background: var(--light-bg);
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.info-card {
+    background: #eef2ff;
+    padding: 25px;
+    border-left: 5px solid var(--highlight-blue);
+    margin: 30px 0;
+    border-radius: 4px;
+}
+
+.tutorial-list {
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.badge-free { background: #c6f6d5; color: #276749; }
+.badge-pro { background: #ddd6fe; color: #5b21b6; }
+
+/* Responsive Sidebar */
+@media (max-width: 900px) {
+    .tutorial-wrapper { flex-direction: column; }
+    .sidebar { width: 100%; position: relative; top: 0; border-right: none; border-bottom: 1px solid #eee; }
+}
+
+/* --- TUTORIAL PAGE SPECIFIC LAYOUT --- */
+.container { 
+    display: flex; 
+    max-width: 1300px; 
+    margin: 0 auto; 
+    padding: 40px 5%; 
+    gap: 50px; 
+}
+
+/* SIDEBAR NAV */
+.sidebar { 
+    width: 280px; 
+    position: sticky; 
+    top: 100px; 
+    height: fit-content; 
+    border-right: 1px solid #eee; 
+    padding-right: 20px; 
+}
+
+.sidebar h3 { 
+    font-size: 0.8rem; 
+    text-transform: uppercase; 
+    color: #aaa; 
+    letter-spacing: 1px; 
+    margin-bottom: 20px; 
+}
+
+.sidebar ul { list-style: none; }
+
+.sidebar li a { 
+    display: block; 
+    padding: 12px 0; 
+    color: var(--text-color); 
+    text-decoration: none; 
+    transition: 0.3s; 
+    font-weight: 600; 
+}
+
+.sidebar li a:hover, 
+.sidebar li a.active { 
+    color: var(--primary-purple); 
+    padding-left: 10px; 
+}
+
+/* MAIN CONTENT */
+.main-content { flex: 1; }
+
+.main-content h1 { 
+    font-size: 3rem; 
+    color: var(--primary-purple); 
+    margin-bottom: 20px; 
+    line-height: 1.2; 
+}
+
+.main-content h2 { 
+    font-size: 2rem; 
+    color: var(--primary-purple); 
+    margin-bottom: 20px; 
+    border-bottom: 2px solid #f0f0f0; 
+    padding-bottom: 10px; 
+}
+
+.main-content p { 
+    font-size: 1.1rem; 
+    line-height: 1.8; 
+    color: #444; 
+    margin-bottom: 20px; 
+}
+
+/* ACADEMY SECTION */
+.academy-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; 
+}
+
+.course-card { 
+    padding: 30px; 
+    border-radius: 15px; 
+    text-align: left; 
+}
+
+.free-path { 
+    background: #f0fff4; 
+    border: 1px solid #c6f6d5; 
+}
+
+.paid-path { 
+    background: #f5f3ff; 
+    border: 1px solid #ddd6fe; 
+}
+
+.badge { 
+    display: inline-block; 
+    padding: 4px 10px; 
+    border-radius: 5px; 
+    font-size: 0.7rem; 
+    font-weight: 800; 
+    margin-bottom: 10px; 
+}
+
+/* Header Active Link */
+nav a.active {
+    color: var(--accent-purple);
+}
+
+/* Mobile Adjustments for Tutorial Page */
+@media (max-width: 900px) {
+    .container { flex-direction: column; }
+    .sidebar { 
+        width: 100%; 
+        position: relative; 
+        top: 0; 
+        border-right: none; 
+        border-bottom: 1px solid #eee; 
+        margin-bottom: 30px; 
+    }
+    .academy-grid { grid-template-columns: 1fr; }
+}
+
+/* =====================================================================
+   Quantum Learning Platform additions (non-breaking, additive only)
+   ===================================================================== */
+/* Let the extended navigation wrap on small screens */
+@media (max-width: 900px) {
+    header { flex-wrap: wrap; gap: 6px; }
+    nav ul { flex-wrap: wrap; gap: 6px 16px; justify-content: center; }
+}
+/* Long e-mail addresses in the footer could push narrow screens sideways */
+.footer-col p { overflow-wrap: anywhere; }
+/* Home: Quantum Academy section reuses .features / .feature-card */
+.ql-home-academy { background: var(--light-bg); }
+.ql-home-academy .card-wrapper { cursor: pointer; }
+.ql-home-lead { max-width: 760px; margin: -40px auto 50px; color: #555; font-size: 1.1rem; }
+.ql-home-cta { margin-top: 45px; }
+.ql-btn-solid { background: var(--primary-purple); color: var(--white); }
+.ql-btn-outline { border-color: var(--primary-purple); color: var(--primary-purple); }
+
+/* Home cards (Celestial Toolkit + Quantum Academy): light-blue glass cards with hover animation */
+.features .card-wrapper { cursor: pointer; height: 100%; }
+.features .feature-card {
+    position: relative;
+    height: 100%;
+    background: #f0f7ff;
+    border: 1px solid #cfe6fb;
+    border-radius: 22px;
+    overflow: hidden;
+    transition: transform .4s cubic-bezier(.2, .8, .2, 1), box-shadow .4s ease, border-color .4s ease, background .4s ease;
+}
+.features .feature-card::before {           /* soft glowing line along the top edge */
+    content: '';
+    position: absolute;
+    top: 0; left: 18%; right: 18%;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, transparent, var(--highlight-blue), transparent);
+    box-shadow: 0 0 14px rgba(79, 172, 254, .55);
+    opacity: .75;
+    transition: left .4s ease, right .4s ease, opacity .4s ease;
+}
+.features .feature-card::after {            /* accent bar that grows from the centre on hover */
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    width: 0; height: 3px;
+    border-radius: 3px;
+    background: #ff1fd1;
+    transform: translateX(-50%);
+    transition: width .4s cubic-bezier(.2, .8, .2, 1);
+}
+.features .feature-card h3 { font-family: 'Orbitron', sans-serif; letter-spacing: .5px; margin-bottom: 14px; }
+.features .feature-icon { display: inline-block; transition: transform .4s cubic-bezier(.2, .8, .2, 1), color .4s ease; }
+.features .card-wrapper:hover .feature-card,
+.features .card-wrapper:focus-visible .feature-card {
+    transform: translateY(-10px);
+    background: #f7fbff;
+    border-color: #9fd0fb;
+    box-shadow: 0 18px 40px rgba(79, 172, 254, .22), 0 4px 12px rgba(38, 8, 89, .06);
+}
+.features .card-wrapper:hover .feature-card::before,
+.features .card-wrapper:focus-visible .feature-card::before { left: 6%; right: 6%; opacity: 1; }
+.features .card-wrapper:hover .feature-card::after,
+.features .card-wrapper:focus-visible .feature-card::after { width: 28%; }
+.features .card-wrapper:hover .feature-icon,
+.features .card-wrapper:focus-visible .feature-icon { transform: translateY(-4px) scale(1.12); color: var(--accent-purple); }
+.features .card-wrapper:focus-visible { outline: none; }
+.features .card-wrapper:focus-visible .feature-card { outline: 3px solid var(--highlight-blue); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+    .features .feature-card, .features .feature-card::before, .features .feature-card::after, .features .feature-icon { transition: none; }
+}
+/* Tutorials: module cards link into the Learning Hub */
+.gate-card.tut-link { text-decoration: none; color: inherit; display: block; transition: transform .2s, box-shadow .2s; }
+.gate-card.tut-link:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,.08); }
+.gate-card.tut-link i { color: var(--primary-purple); font-size: 1.6rem; margin-bottom: 8px; }
+.gate-card.tut-link h4 { color: var(--primary-purple); }

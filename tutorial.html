@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Center | Quantum Lens</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">Quantum Lens</a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#toolkit">Simulator</a></li>
+            <li><a href="#" class="active">Tutorials</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="lab.html">Lab</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="docs.html">Docs</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Contents</h3>
+        <ul>
+            <li><a href="#intro">1. Introduction</a></li>
+            <li><a href="#basics">2. Quantum Basics</a></li>
+            <li><a href="#advanced">3. Density & Tracing</a></li>
+            <li><a href="#bloch">4. The Bloch Sphere</a></li>
+            <li><a href="#simulator">5. Simulator Guide</a></li>
+            <li><a href="#academy">6. Quantum Academy</a></li>
+            <li><a href="#learning-path">7. Interactive Modules</a></li>
+            <li><a href="#practice">8. Practice &amp; Assessment</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <section id="intro">
+            <h1>Tutorials & Learning</h1>
+            <p>Welcome to the Quantum Lens Learning Center. Whether you are a student or a researcher, this guide will help you navigate the complexities of quantum mechanics and our simulation tools.</p>
+        </section>
+
+        <section id="basics">
+            <h2>Quantum Basics</h2>
+            <p>At the heart of our simulator is the <strong>Qubit</strong>. Unlike classical bits, qubits utilize <strong>Superposition</strong> to exist in multiple states simultaneously.</p>
+            <div class="gate-grid">
+                <div class="gate-card"><i class="fas fa-bolt"></i><h4>Hadamard</h4><p>Creates Superposition</p></div>
+                <div class="gate-card"><i class="fas fa-random"></i><h4>Pauli-X</h4><p>Quantum NOT Gate</p></div>
+                <div class="gate-card"><i class="fas fa-link"></i><h4>CNOT</h4><p>Entangles Qubits</p></div>
+            </div>
+        </section>
+
+        <section id="advanced">
+            <h2>Density Matrices & Partial Tracing</h2>
+            <p>When simulating multi-qubit systems, we often need to look at a single qubit's state. This is where <strong>Density Matrices (ρ)</strong> come in.</p>
+                        <div class="info-card">
+                <strong>Partial Tracing:</strong> This operation allows us to "trace out" the environment or other qubits to see the reduced state of a specific qubit. This is vital for understanding how entanglement affects individual measurements.
+            </div>
+        </section>
+
+        <section id="bloch">
+            <h2>Visualizing with the Bloch Sphere</h2>
+            <p>The Bloch Sphere provides a 3D visual for single-qubit states. In Quantum Lens, you can see these update in real-time as you drag and drop gates.</p>
+            
+            
+            <ul style="margin-left: 20px; color: var(--text-color); line-height: 2;">
+                <li><strong>North Pole:</strong> State |0⟩</li>
+                <li><strong>South Pole:</strong> State |1⟩</li>
+                <li><strong>Center:</strong> Maximally mixed state</li>
+            </ul>
+        </section>
+
+        <section id="simulator">
+            <h2>How to Use the Simulator</h2>
+            <p>Our simulator supports two modes of input:</p>
+            <div class="info-card">
+                <p style="margin-bottom: 10px;"><strong>Gate-Based:</strong> Simply drag icons onto the circuit lines. Perfect for beginners.</p>
+                <p><strong>Code-Based:</strong> Enter QASM or Qiskit-style code for complex algorithmic design.</p>
+            </div>
+            <p>Both modes are also built right into Quantum Lens: the <a href="lab.html">Quantum Lab</a> combines a drag-and-drop builder with a code lab for Qiskit, Cirq, PennyLane, qBraid and OpenQASM.</p>
+        </section>
+
+        <section id="academy">
+            <h2>Quantum Academy</h2>
+            <div class="academy-grid">
+                <div class="course-card free-path">
+                    <span class="badge" style="background:#c6f6d5; color:#276749">FREE</span>
+                    <h3>IBM Qiskit Course</h3>
+                    <p>The most comprehensive free textbook on quantum computing.</p>
+                </div>
+                <div class="course-card paid-path">
+                    <span class="badge" style="background:#ddd6fe; color:#5b21b6">PRO CERT</span>
+                    <h3>MIT xPRO Quantum</h3>
+                    <p>Earn a professional certificate from MIT in Quantum Computing.</p>
+                </div>
+            </div>
+        </section>
+        <section id="learning-path">
+            <h2>Interactive Modules</h2>
+            <p>Ready to go deeper? The <a href="learn.html">Learning Hub</a> turns these topics into eight hands-on modules with live simulations, quizzes and a personalised learning path.</p>
+            <div class="gate-grid">
+                <a class="gate-card tut-link" href="learn.html#module-fundamentals"><i class="fas fa-atom"></i><h4>1. Fundamentals</h4><p>Bits vs. qubits</p></a>
+                <a class="gate-card tut-link" href="learn.html#module-qubits"><i class="fas fa-globe"></i><h4>2. Qubits &amp; Bloch</h4><p>States and the sphere</p></a>
+                <a class="gate-card tut-link" href="learn.html#module-superposition"><i class="fas fa-wave-square"></i><h4>3. Superposition</h4><p>Hadamard &amp; interference</p></a>
+                <a class="gate-card tut-link" href="learn.html#module-entanglement"><i class="fas fa-link"></i><h4>4. Entanglement</h4><p>Bell &amp; GHZ states</p></a>
+                <a class="gate-card tut-link" href="learn.html#module-gates"><i class="fas fa-microchip"></i><h4>5. Quantum Gates</h4><p>Unitaries &amp; rotations</p></a>
+                <a class="gate-card tut-link" href="learn.html#module-measurement"><i class="fas fa-ruler-combined"></i><h4>6. Measurement</h4><p>Born rule &amp; shots</p></a>
+                <a class="gate-card tut-link" href="learn.html#module-circuits"><i class="fas fa-diagram-project"></i><h4>7. Circuit Design</h4><p>Depth &amp; optimisation</p></a>
+                <a class="gate-card tut-link" href="learn.html#module-algorithms"><i class="fas fa-brain"></i><h4>8. Algorithms</h4><p>DJ, BV, Grover, QFT</p></a>
+            </div>
+        </section>
+
+        <section id="practice">
+            <h2>Practice &amp; Assessment</h2>
+            <div class="info-card">
+                <p style="margin-bottom: 10px;"><strong>Challenges:</strong> build circuits and write code that is graded automatically — <a href="lab.html#tab=challenges">open the challenges</a>.</p>
+                <p style="margin-bottom: 10px;"><strong>AI Quantum Tutor:</strong> ask for explanations, code, debugging help or optimisation tips inside the <a href="lab.html">Lab</a>.</p>
+                <p><strong>Progress:</strong> follow your scores and recommendations on the <a href="dashboard.html">Dashboard</a>.</p>
+            </div>
+        </section>
+    </main>
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h3>Quantum Lens</h3>
+            <p>Glimpses into the Quantum Realm.</p>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#toolkit">Simulator</a></li>
+                <li><a href="#">Tutorials</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Contact</h3>
+            <p>Email: blochbusters6@gmail.com</p>
+            <p>GitHub: QuantumLens/repo</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p class="copyright">&copy; 2025 Quantum Lens. All Rights Reserved.</p>
+        <div class="credits">
+            <p><strong>Made by BlochBusters</strong></p>
+            <p class="thanks">Special Thanks to Dr. M Jahir Pasha</p>
+        </div>
+        <div class="team-section">
+            <h4>Our Team</h4>
+            <div class="team-grid">
+                <span>Bijin Deva Reddy</span>
+                <span>A Honey</span>
+                <span>Y Rama Deekshita</span>
+                <span>P Lahari</span>
+                <span>B Pranav Sai</span>
+                <span>G Amareswar Prasad Reddy</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

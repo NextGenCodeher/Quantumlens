@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Quantum Lens</title>
+    <meta name="description" content="Learner progress tracking and instructor analytics for the Quantum Lens learning platform.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/quantum.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="index.html" class="logo"><img src="logo.png" alt="Quantum Lens Logo" class="nav-logo">Quantum Lens</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#toolkit">Simulator</a></li>
+                <li><a href="tutorial.html">Tutorials</a></li>
+                <li><a href="learn.html">Learn</a></li>
+                <li><a href="lab.html">Lab</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="docs.html">Docs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="ql-hero">
+        <div class="ql-hero-inner">
+            <div>
+                <div class="ql-crumbs"><a href="index.html">Home</a> / Dashboard</div>
+                <h1>Progress &amp; Analytics</h1>
+                <p>Track your own learning — or, as an instructor, follow a whole class: completion, assessment performance and the topics learners find hardest.</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="ql-wrap">
+        <div class="ql-tabs" role="tablist" aria-label="Dashboard views">
+            <button class="ql-tab" role="tab" id="tab-me" aria-controls="panel-me" aria-selected="true"><i class="fas fa-user-astronaut"></i> My Progress</button>
+            <button class="ql-tab" role="tab" id="tab-inst" aria-controls="panel-inst" aria-selected="false"><i class="fas fa-chalkboard-user"></i> Instructor Dashboard</button>
+        </div>
+
+        <!-- ================= LEARNER ================= -->
+        <section class="ql-panel" id="panel-me" role="tabpanel" aria-labelledby="tab-me">
+            <div class="ql-row" style="margin-bottom:14px">
+                <h2 style="color:var(--primary-purple)" id="me-title">My progress</h2>
+                <span class="ql-spacer"></span>
+                <button class="ql-btn ql-btn-small" id="me-export"><i class="fas fa-file-export"></i> Export progress</button>
+                <label class="ql-btn ql-btn-small" for="me-import"><i class="fas fa-file-import"></i> Import</label>
+                <input type="file" id="me-import" accept=".json" hidden>
+                <button class="ql-btn ql-btn-small ql-btn-danger" id="me-reset"><i class="fas fa-rotate-left"></i> Reset</button>
+            </div>
+            <div class="ql-stats" id="me-stats"></div>
+            <div class="ql-grid-2">
+                <div class="ql-card"><h3>Module progress</h3><div id="me-modules"></div></div>
+                <div class="ql-card"><h3>Recommended next steps</h3><div class="ql-recs" id="me-recs"></div></div>
+            </div>
+            <div class="ql-grid-2" style="margin-top:18px">
+                <div class="ql-card"><h3>Assessments</h3><div id="me-assess"></div></div>
+                <div class="ql-card"><h3>Recent activity</h3><ul class="ql-activity" id="me-activity"></ul></div>
+            </div>
+            <div class="ql-card" style="margin-top:18px">
+                <h3><i class="fas fa-users"></i> Join a class</h3>
+                <p class="ql-small" style="color:#555;margin-bottom:10px">Share your progress with an instructor. With the Quantum Lens backend running, progress syncs automatically to the class code; otherwise use <b>Export progress</b> and send the file to your instructor.</p>
+                <form class="ql-profile-form" id="join-form">
+                    <label>Your name <input class="ql-input" name="name" maxlength="60" required></label>
+                    <label>Class code <input class="ql-input" name="code" maxlength="20" placeholder="e.g. QC101" style="text-transform:uppercase"></label>
+                    <button class="ql-btn ql-btn-primary" type="submit"><i class="fas fa-right-to-bracket"></i> Save</button>
+                    <span class="ql-small ql-muted" id="join-status"></span>
+                </form>
+            </div>
+        </section>
+
+        <!-- ================= INSTRUCTOR ================= -->
+        <section class="ql-panel" id="panel-inst" role="tabpanel" aria-labelledby="tab-inst" hidden>
+            <div class="ql-card ql-card-soft" style="margin-bottom:16px">
+                <h3><i class="fas fa-database"></i> Load learner data</h3>
+                <div class="ql-row">
+                    <form class="ql-row" id="class-form"><label class="ql-sr" for="class-code">Class code</label><input class="ql-input" id="class-code" placeholder="Class code (e.g. QC101)" maxlength="20" style="text-transform:uppercase"><button class="ql-btn ql-btn-primary" type="submit"><i class="fas fa-cloud-arrow-down"></i> Load class</button></form>
+                    <label class="ql-btn" for="inst-import"><i class="fas fa-file-import"></i> Import learner files</label>
+                    <input type="file" id="inst-import" accept=".json" multiple hidden>
+                    <button class="ql-btn" id="inst-demo"><i class="fas fa-flask"></i> Load sample cohort</button>
+                    <button class="ql-btn" id="inst-me"><i class="fas fa-user-plus"></i> Add my own progress</button>
+                    <span class="ql-spacer"></span>
+                    <button class="ql-btn ql-btn-small" id="inst-csv" disabled><i class="fas fa-file-csv"></i> Export CSV</button>
+                    <button class="ql-btn ql-btn-small ql-btn-danger" id="inst-clear" disabled><i class="fas fa-xmark"></i> Clear</button>
+                </div>
+                <p class="ql-small ql-muted" id="inst-source" style="margin-top:8px">Load a class from the backend by code, import progress files exported by learners, or explore with a clearly-labelled sample cohort.</p>
+            </div>
+            <div id="inst-body"><div class="ql-empty"><i class="fas fa-chalkboard-user"></i>No learner data loaded yet.</div></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col"><h3>Quantum Lens</h3><p>Glimpses into the Quantum Realm.</p></div>
+            <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="index.html#toolkit">Simulator</a></li><li><a href="tutorial.html">Tutorials</a></li><li><a href="learn.html">Learning Hub</a></li></ul></div>
+            <div class="footer-col"><h3>Contact</h3><p>Email: blochbusters6@gmail.com</p><p>GitHub: QuantumLens/repo</p></div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2025 Quantum Lens. All Rights Reserved.</p>
+            <div class="credits"><p><strong>Made by BlochBusters</strong></p><p class="thanks">Special Thanks to Dr. M Jahir Pasha</p></div>
+            <div class="team-section">
+                <h4>Our Team</h4>
+                <div class="team-grid">
+                    <span>Bijin Deva Reddy</span>
+                    <span>A Honey</span>
+                    <span>Y Rama Deekshitha</span>
+                    <span>P Lahari</span>
+                    <span>B Pranav Sai</span>
+                    <span>G Amareswar Prasad Reddy</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/qcore.js"></script>
+    <script src="assets/js/qparser.js"></script>
+    <script src="assets/js/qcontent.js"></script>
+    <script src="assets/js/qstore.js"></script>
+    <script src="assets/js/qviz.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

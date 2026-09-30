@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Hub | Quantum Lens</title>
+    <meta name="description" content="Structured, interactive quantum computing modules with quizzes, challenges, progress tracking and a personalised learning path.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/quantum.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="index.html" class="logo"><img src="logo.png" alt="Quantum Lens Logo" class="nav-logo">Quantum Lens</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#toolkit">Simulator</a></li>
+                <li><a href="tutorial.html">Tutorials</a></li>
+                <li><a href="learn.html" class="active">Learn</a></li>
+                <li><a href="lab.html">Lab</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="docs.html">Docs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="ql-hero">
+        <div class="ql-hero-inner">
+            <div>
+                <div class="ql-crumbs"><a href="index.html">Home</a> / <a href="tutorial.html">Tutorials</a> / Learning Hub</div>
+                <h1>Quantum Learning Hub</h1>
+                <p>Eight interactive modules — from your first qubit to Grover's algorithm — with live simulations, quizzes, challenges and a learning path that adapts to your progress.</p>
+            </div>
+            <a class="ql-btn ql-btn-ghost" href="dashboard.html"><i class="fas fa-chart-line"></i> My progress</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Your path</h3>
+            <ul id="side-nav">
+                <li><a href="#path">Learning path</a></li>
+            </ul>
+            <h3 style="margin-top:24px">Practice</h3>
+            <ul>
+                <li><a href="lab.html#tab=challenges">Challenges</a></li>
+                <li><a href="lab.html">Quantum Lab</a></li>
+                <li><a href="#tutor-section">AI Tutor</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <section id="path">
+                <h1>Your Learning Path</h1>
+                <p>Tell us where you're starting from and what you want to achieve — the path, the optional modules and the recommendations below update as you learn.</p>
+                <div class="ql-card ql-card-soft" style="margin-bottom:18px">
+                    <form class="ql-profile-form" id="profile-form">
+                        <label>Your name <input class="ql-input" name="name" maxlength="60" placeholder="e.g. Ada"></label>
+                        <label>Experience
+                            <select class="ql-select" name="level">
+                                <option value="beginner">Beginner — new to quantum</option>
+                                <option value="intermediate">Intermediate — know qubits &amp; gates</option>
+                                <option value="advanced">Advanced — ready for algorithms</option>
+                            </select>
+                        </label>
+                        <label>Goal
+                            <select class="ql-select" name="goal">
+                                <option value="foundations">Understand the foundations</option>
+                                <option value="algorithms">Learn quantum algorithms</option>
+                                <option value="coding">Write quantum code</option>
+                            </select>
+                        </label>
+                        <span class="ql-spacer"></span>
+                        <div style="min-width:220px">
+                            <div class="ql-row" style="justify-content:space-between"><b style="color:var(--primary-purple)">Overall progress</b><b id="overall-pct" style="color:var(--primary-purple)">0%</b></div>
+                            <div class="ql-progress" style="margin-top:6px"><span id="overall-bar" style="width:0"></span></div>
+                            <div class="ql-small ql-muted" id="overall-meta" style="margin-top:4px"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ql-path" id="path-grid"></div>
+                <h2 style="font-size:1.4rem">Recommended for you</h2>
+                <div class="ql-recs" id="recs"></div>
+            </section>
+
+            <div id="modules"></div>
+
+            <section id="tutor-section">
+                <h2>Ask the AI Quantum Tutor</h2>
+                <p>Stuck on a lesson? Ask for a simpler explanation, an analogy, code in your favourite framework, or what to study next. The tutor knows which module you're reading.</p>
+                <div id="tutor"></div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col"><h3>Quantum Lens</h3><p>Glimpses into the Quantum Realm.</p></div>
+            <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="index.html#toolkit">Simulator</a></li><li><a href="tutorial.html">Tutorials</a></li><li><a href="lab.html">Quantum Lab</a></li></ul></div>
+            <div class="footer-col"><h3>Contact</h3><p>Email: blochbusters6@gmail.com</p><p>GitHub: QuantumLens/repo</p></div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2025 Quantum Lens. All Rights Reserved.</p>
+            <div class="credits"><p><strong>Made by BlochBusters</strong></p><p class="thanks">Special Thanks to Dr. M Jahir Pasha</p></div>
+            <div class="team-section">
+                <h4>Our Team</h4>
+                <div class="team-grid">
+                    <span>Bijin Deva Reddy</span>
+                    <span>A Honey</span>
+                    <span>Y Rama Deekshitha</span>
+                    <span>P Lahari</span>
+                    <span>B Pranav Sai</span>
+                    <span>G Amareswar Prasad Reddy</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/qcore.js"></script>
+    <script src="assets/js/qparser.js"></script>
+    <script src="assets/js/qcontent.js"></script>
+    <script src="assets/js/qstore.js"></script>
+    <script src="assets/js/qviz.js"></script>
+    <script src="assets/js/qtutor.js"></script>
+    <script src="assets/js/learn.js"></script>
+</body>
+</html>
